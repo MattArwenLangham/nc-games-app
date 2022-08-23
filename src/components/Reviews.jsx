@@ -14,9 +14,7 @@ const Reviews = () => {
         fetchReviews(category)
         .then(({reviews: reviewsArray}) => {
             setReviews(reviewsArray)
-            console.log(reviewsArray)
         })
-        console.log(category)
     }, [])
     
     return <>
@@ -24,7 +22,6 @@ const Reviews = () => {
         <button>Post Review</button>
         <h1>Critic Reviews</h1>
         <select>
-            <label>sort by</label>
             <option></option>
         </select>
     </header>

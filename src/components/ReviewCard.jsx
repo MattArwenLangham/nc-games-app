@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 const ReviewCard = ({info}) => {
     const { review_id, created_at, category, title, owner, review_img_url, review_body, votes } = info;
     
@@ -5,14 +7,14 @@ const ReviewCard = ({info}) => {
     if(reviewPreview > 120) reviewPreview = review_body.indexOf(" ", 120);
 
     const postDate = new Date(created_at).toLocaleDateString("en-UK")
-    return <div className="review-card" style={{"--img": `url(${review_img_url})`}}> 
+    return <Link to={`/reviews/${review_id}`} className="review-card" style={{"--img": `url(${review_img_url})`, textDecoration: 'none', color: 'initial'}}> 
         <h1>{title}</h1>
         <p>By: {owner}</p>
         <p>{postDate}</p>
         <p className="review-body-preview">{review_body.slice(0, reviewPreview || 10)}...</p>
         <p className="category-text">Category: {category}</p>
         
-    </div>
+    </Link>
 }
 
 export default ReviewCard
