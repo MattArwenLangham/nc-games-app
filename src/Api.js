@@ -9,6 +9,11 @@ export const fetchReviews = (category) => {
     .then(({data : reviews}) => reviews)
 }
 
+export const fetchReviewById = (review_id) => {
+    return axios.get(`https://matts-nc-games.herokuapp.com/API/reviews/${review_id}`)
+    .then(({data : review}) => review)
+}
+
 export const fetchCategories = () => {
     return axios.get('https://matts-nc-games.herokuapp.com/API/categories')
     .then(({data : categories}) => categories)

@@ -1,5 +1,10 @@
 const Title = () => {
-    return <div className="title">
+
+    const returnHome = () => {
+        window.location = '/'
+    }
+
+    return <div className="title" onClick={returnHome}>
     <img id="d20-left" src="./img/d20.png" alt="Die with 20 sides"/>
         <h1>Nerd Critical</h1>
         <h3>NC Board Games Review</h3>
