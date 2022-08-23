@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<LandingPage />}/>
           <Route path="categories/" element={<Categories />}/>
           <Route path="reviews/" element={<Reviews />}/>
+          <Route path="reviews/:category" element={<Reviews />}/>
           <Route path="users/" element={<Users />}/>
           <Route path="about-us/" element={<AboutUs />}/>
         </Routes>

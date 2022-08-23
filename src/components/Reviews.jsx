@@ -1,20 +1,24 @@
-import { useEffect, useState } from 'react';
-import '../stylesheets/Reviews.css';
+import { useEffect, useState } from 'react'
+import '../stylesheets/Reviews.css'
 import {fetchReviews } from '../Api'
 import ReviewCard from './ReviewCard'
+import { useSearchParams } from 'react-router-dom'
 
 const Reviews = () => {
 
     const [reviews, setReviews] = useState([])
+    const [searchParams] = useSearchParams()
 
     useEffect(() => {
-        fetchReviews()
+        let category = searchParams.get("category")
+        fetchReviews(category)
         .then(({reviews: reviewsArray}) => {
             setReviews(reviewsArray)
+            console.log(reviewsArray)
         })
+        console.log(category)
     }, [])
     
-    console.log(reviews)
     return <>
     <header className="reviews-header">
         <button>Post Review</button>
