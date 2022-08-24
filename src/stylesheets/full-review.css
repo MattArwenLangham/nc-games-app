@@ -56,6 +56,17 @@
 }
 
 @media only screen and (min-width: 600px) {
+
+    .review-body{
+        width: 80vw;
+        margin: 20px auto;
+    }
+
+    .game-info-container{
+        width: 70vw;
+        margin: auto;
+    }
+
     .review-heading{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

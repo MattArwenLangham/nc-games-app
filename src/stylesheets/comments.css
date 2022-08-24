@@ -1,0 +1,107 @@
+.comments-container {
+    border: 2px black solid;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.comment-container {
+    border: 2px black solid;
+    margin: 2px;
+    height: auto;
+    background-color: rgba(255, 250, 238, 0.897);
+    
+    display: grid;
+    grid-template-columns: auto 1fr ;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas: 
+    "img user"
+    "body body"
+    "date vote";
+}
+
+.comment-avatar{
+    border: 2px black solid;
+    margin: 10px auto;
+    grid-area: img;
+    height: 100px;
+}
+
+.comment-author{
+    grid-area: user;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding-top: 15%;
+}
+
+.comment-body{
+    grid-area: body;
+    text-align: left;
+    padding: 10px;
+    background-color: rgb(0,0,0,0.1);
+    margin: 10px;
+}
+
+.comment-timestamp{
+    grid-area: date;
+    padding-left: 10px;
+    margin: auto;
+}
+
+.comment-container .vote-container{
+    font-size: 0.8em;
+    grid-area: vote;
+}
+
+.comment-container .d20{
+    height: 75px;
+}
+
+.comment-container #upvote{
+    height: 40px;
+   }
+
+.comment-container #downvote{
+    height: 40px;
+   }
+
+@media only screen and (min-width: 600px) {
+
+    .comments-container {
+        min-width: fit-content;
+        padding: 20px;
+        max-width: 850px;
+        width: 80vw;
+        margin: auto;
+    }
+
+    .comment-container {
+        margin: 20px auto;
+        grid-template-columns: 0.3fr 1fr ;
+        grid-template-rows: 1fr auto auto;
+        grid-template-areas: 
+        "img date"
+        "img body"
+        "user vote";
+        min-width: fit-content;
+        max-width: 800px;
+        width: 80vw;
+    }
+
+    .comment-avatar{
+        height: 100px;
+        margin: 20px auto auto auto;
+    }
+
+    .comment-author{
+        grid-area: user;
+        font-size: 1.5em;
+        color: white;
+        font-weight: 600;
+        margin: 0px auto auto auto;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+}
