@@ -18,3 +18,12 @@ export const fetchCategories = () => {
     return axios.get('https://matts-nc-games.herokuapp.com/API/categories')
     .then(({data : categories}) => categories)
 }
+
+export const sendVote = (review_id, vote) => {
+    return axios
+    .patch(`https://matts-nc-games.herokuapp.com/API/reviews/${review_id}`, {"inc_votes": vote})
+    .then(({data : review}) => review)
+    .catch((err) => {
+        return Promise.reject(err)
+    })
+}

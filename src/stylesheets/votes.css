@@ -1,0 +1,66 @@
+.vote-container{
+    width: 80%;
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+    "upvote d20 downvote";
+    justify-items: center;
+}
+
+.vote-container p{
+    margin: auto;
+    grid-area: d20;
+    font-size: 1.5em;
+}
+
+.d20{
+    margin: auto;
+    grid-area: d20;
+    height: 150px;
+}
+
+.upvote{
+    margin: auto;
+    grid-area: upvote;
+    height: 70px;
+}
+
+.upvote--up {
+    margin: auto;
+    grid-area: upvote;
+    height: 70px;
+    filter: brightness(170%);
+}
+
+.upvote--down {
+    margin: auto;
+    grid-area: upvote;
+    height: 70px;
+    filter: brightness(30%);
+}
+
+.downvote {
+    margin: auto;
+    grid-area: downvote;
+    height: 70px;
+}
+.downvote--up {
+    margin: auto;
+    grid-area: downvote;
+    height: 70px;
+    filter: brightness(30%);
+}
+
+.downvote--down {
+    margin: auto;
+    grid-area: downvote;
+    height: 70px;
+    filter: brightness(170%);
+}
+
+@media only screen and (min-width: 600px) {
+    .vote-container{
+        width: 300px;
+    }
+}
