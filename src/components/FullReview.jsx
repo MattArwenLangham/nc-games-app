@@ -2,6 +2,7 @@ import '../stylesheets/full-review.css'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { fetchReviewById } from '../Api';
+import Votes from './Votes'
 
 const FullReview = () => {
     
@@ -22,6 +23,7 @@ const FullReview = () => {
     return <div className="review-container" >
         <div className="background" style={{"--img": `url(${review_img_url})`}}></div>
         <div className="review-heading">
+
             <div className="review-info">
                 <img alt="user-avatar"></img>
                 <h1>{title}</h1>
@@ -36,6 +38,7 @@ const FullReview = () => {
             <p><strong>Game Type:</strong> {category}</p>
             <p><strong>Created By:</strong> {designer}</p>
         </div>
+        <Votes votes={votes} review_id={review_id}/>
     </div>
 }
 

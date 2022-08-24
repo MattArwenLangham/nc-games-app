@@ -49,6 +49,15 @@
     text-align:left;
 
     box-shadow: 0px 5px 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: 
+    "title title"
+    "info votes"
+    "body votes"
+    "category ."
 }
 
 .review-card h1 {
@@ -59,11 +68,14 @@
     padding: 5px;
 
     margin-left: 0px;
-    font-size: 25px
+    font-size: 25px;
+
+    grid-area: title;
 }
 
 .category-text {
     color: blue;
+    grid-area: category;
 }
 
 .review-body-preview{
@@ -71,6 +83,21 @@
     font-style: italic;
     background-color:rgba(255, 255, 255, 0.8);
     width: fit-content;
+    grid-area: body;
+}
+
+.votes-d20{
+    grid-area: votes;
+    margin: auto;
+    height: 100px;
+}
+
+.votes-display{
+    grid-area: votes;
+    margin: auto;
+    font-weight: 600;
+    font-size: 0.9em;
+    padding-top: 5px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -106,5 +133,14 @@
 
     .review-card-container {
         justify-content: space-around;
+    }
+
+    .votes-d20{
+        height: 150px;
+    }
+
+    .votes-display{
+        font-size: 1.3em;
+        padding-top: 5px;
     }
 }

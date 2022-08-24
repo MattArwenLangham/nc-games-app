@@ -13,7 +13,9 @@ const ReviewCard = ({info}) => {
         <p>{postDate}</p>
         <p className="review-body-preview">{review_body.slice(0, reviewPreview || 10)}...</p>
         <p className="category-text">Category: {category}</p>
-        
+        <img className="votes-d20" src="/img/votes.png" />
+        <p className="votes-display">{votes}</p>
+    
     </Link>
 }
 
