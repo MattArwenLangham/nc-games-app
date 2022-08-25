@@ -67,6 +67,28 @@
     height: 40px;
    }
 
+/* AddComment */
+
+.comment-box-form{
+    display: grid;
+    grid-template-columns: auto, 1fr;
+    margin: 10px;
+}
+
+.comment-input-box{
+    word-wrap: break-word;
+    resize: none;
+}
+
+.comment-input-box:focus{
+    height: 125px;   
+}
+
+.comment-box-form button {
+    margin: 5px;
+    height: 50px;
+}
+
 @media only screen and (min-width: 600px) {
 
     .comments-container {

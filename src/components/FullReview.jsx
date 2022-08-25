@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { fetchReviewById } from '../Api';
 import Votes from './Votes'
 import Comments from './comments/Comments'
+import AddComment from './comments/AddComment'
 
 const FullReview = () => {
     
@@ -41,6 +42,7 @@ const FullReview = () => {
             <p><strong>Created By:</strong> {designer}</p>
         </div>
         <Votes votes={votes} review_id={review_id}/>
+        <AddComment review_id={review_id}/>
         <Comments review_id={review_id}/>
     </div>
 }
