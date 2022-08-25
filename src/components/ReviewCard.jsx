@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 
 const ReviewCard = ({info}) => {
-    const { review_id, created_at, category, title, owner, review_img_url, review_body, votes } = info;
+    const { review_id, created_at, category, title, owner, review_img_url, review_body, votes, comment_count } = info;
     
     let reviewPreview = review_body.search(/\.|!|\?/);
     if(reviewPreview > 120) reviewPreview = review_body.indexOf(" ", 120);
@@ -13,9 +13,9 @@ const ReviewCard = ({info}) => {
         <p>{postDate}</p>
         <p className="review-body-preview">{review_body.slice(0, reviewPreview || 10)}...</p>
         <p className="category-text">Category: {category}</p>
+        <p>Comments: {comment_count}</p>
         <img className="votes-d20" src="/img/votes.png" />
         <p className="votes-display">{votes}</p>
-    
     </Link>
 }
 

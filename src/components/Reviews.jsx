@@ -2,35 +2,66 @@ import { useEffect, useState } from 'react'
 import '../stylesheets/Reviews.css'
 import {fetchReviews } from '../Api'
 import ReviewCard from './ReviewCard'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 const Reviews = () => {
 
     const [reviews, setReviews] = useState([])
     const [searchParams] = useSearchParams()
 
+    const navigate = useNavigate()
+    let category = searchParams.get("category")
+    let sort_by = searchParams.get("sort_by")
+    let order = searchParams.get("order")
+
     useEffect(() => {
-        let category = searchParams.get("category")
-        fetchReviews(category)
+        fetchReviews(category, sort_by, order)
         .then(({reviews: reviewsArray}) => {
             setReviews(reviewsArray)
         })
-    }, [])
+    }, [sort_by, order, category])
 
-    const selectHandle = () => {
-        console.log()
+    const queryBuilder = (sortBy = sort_by) => {
+        console.log(sortBy)
+        let searchQuery = ""
+        if(category) searchQuery = (`&category=${category}`)
+        if(sortBy) searchQuery = searchQuery.concat(`&sort_by=${sortBy}`)
+        if(order) searchQuery = searchQuery.concat(`&order=${order}`)
+    
+        navigate({
+            search: searchQuery.slice(1, searchQuery.length)
+        })
+    }
+
+    const selectHandle = (event) => {
+        let sort_by = event.target.value.toLowerCase().replace(" ", "_")
+        if (sort_by.startsWith('--')) return
+        queryBuilder(sort_by)
+    }
+
+    const toggleOrder = () => {
+        if(!sort_by){
+            window.alert('Please choose something to sort by.')
+            return
+        }
+        if (order === 'ASC') order = 'DESC'
+        else order = 'ASC'
+        queryBuilder()
     }
     
     return <>
     <header className="reviews-header">
         <button>Post Review</button>
         <h1>Critic Reviews</h1>
-        <select>
-            <option>--Sort By--</option>
-            <option>Date Posted</option>
-            <option>Most Discussed</option>
-            <option>Most Voted</option>
-        </select>
+        <div className="sorting-container">
+            <select onChange={selectHandle} className="sort-dropdown">
+                <option>--Sort By--</option>
+                <option>Created At</option>
+                <option >Comment Count</option>
+                <option >Votes</option>
+            </select>
+            <img src="./img/sort.png" onClick={toggleOrder} className={`sort-arrow ${order ?? 'ASC'}`} alt="sorting arrow"/>
+        </div>
     </header>
     <div className="review-card-container">
         {reviews.map((reviewCard) => {
