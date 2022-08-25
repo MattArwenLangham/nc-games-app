@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { fetchReviewById } from '../Api';
 import Votes from './Votes'
+import Comments from './comments/Comments'
 
 const FullReview = () => {
     
@@ -19,8 +20,9 @@ const FullReview = () => {
     if(!review) return
     const {title, category, designer, owner, review_body, review_img_url, created_at, votes, comment_count} = review;
     const postDate = new Date(created_at).toLocaleDateString("en-UK")
+    const postTime = new Date(created_at).toLocaleTimeString("en-UK")
 
-    return <div className="review-container" >
+    return <div className="review-container">
         <div className="background" style={{"--img": `url(${review_img_url})`}}></div>
         <div className="review-heading">
 
@@ -28,7 +30,7 @@ const FullReview = () => {
                 <img alt="user-avatar"></img>
                 <h1>{title}</h1>
                 <p className="review-username">By {owner}</p>
-                <p className="review-postdate">{postDate}</p>
+                <p className="review-postdate">{`${postDate} ${postTime}`}</p>
             </div>
         </div>
         <p className="review-body">
@@ -39,6 +41,7 @@ const FullReview = () => {
             <p><strong>Created By:</strong> {designer}</p>
         </div>
         <Votes votes={votes} review_id={review_id}/>
+        <Comments review_id={review_id}/>
     </div>
 }
 
