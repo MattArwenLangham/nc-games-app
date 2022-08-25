@@ -100,10 +100,20 @@
     padding-top: 5px;
 }
 
+.sort-arrow{
+    width: 40px;
+}
+
+.DESC{
+    transform: scaleY(-1);
+    position: relative;
+    top: 30px;
+}
+
 @media only screen and (min-width: 600px) {
 
     .reviews-header{
-        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 2fr 1fr 2fr;
         grid-template-areas:
         ". critic-review ."
@@ -142,5 +152,24 @@
     .votes-display{
         font-size: 1.3em;
         padding-top: 5px;
+    }
+
+    .sorting-container{
+        grid-area: sort-by;
+        
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+    
+    .sort-dropdown{
+        width: 150px;
+        margin: auto;
+    }
+
+    .sort-arrow{
+        margin-right: 50px;
+        margin-bottom: 20px;
     }
 }

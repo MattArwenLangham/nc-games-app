@@ -1,11 +1,7 @@
 import axios from 'axios'
 
-export const fetchReviews = (category) => {
-    let searchParams = ""
-
-    if(category) searchParams = "?category=" + category
-
-    return axios.get(`https://matts-nc-games.herokuapp.com/API/reviews${searchParams}`)
+export const fetchReviews = (category, sort_by, order) => {
+    return axios.get(`https://matts-nc-games.herokuapp.com/API/reviews`, {params: {category, sort_by, order}})
     .then(({data : reviews}) => reviews)
 }
 
