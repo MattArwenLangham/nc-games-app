@@ -114,4 +114,14 @@
         padding: 10px;
         background-color: rgba(0, 0, 0, 0.3);
     }
+
+    .comment-box-form{
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .comment-box-form button {
+        max-width: 300px;
+        margin: auto;
+    }
 }
