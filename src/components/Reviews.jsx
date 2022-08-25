@@ -16,13 +16,20 @@ const Reviews = () => {
             setReviews(reviewsArray)
         })
     }, [])
+
+    const selectHandle = () => {
+        console.log()
+    }
     
     return <>
     <header className="reviews-header">
         <button>Post Review</button>
         <h1>Critic Reviews</h1>
         <select>
-            <option></option>
+            <option>--Sort By--</option>
+            <option>Date Posted</option>
+            <option>Most Discussed</option>
+            <option>Most Voted</option>
         </select>
     </header>
     <div className="review-card-container">
