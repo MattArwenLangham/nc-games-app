@@ -27,6 +27,10 @@ const AddComment = () => {
         })
         .catch(({response}) => {
             window.alert(response.data.msg)
+            commentBox.removeAttribute('disabled')
+            submit.removeAttribute('disabled');
+            commentBox.style.backgroundColor = 'white';
+            submit.innerHTML = 'Post comment';
         })
 
         commentBox.disabled = 'true'
