@@ -7,9 +7,22 @@ import Users from './components/Users'
 import AboutUs from './components/AboutUs'
 import FullReview from './components/FullReview'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { LoggedInUserContext } from './contexts/LoggedInUser';
+import { useEffect, useState } from 'react';
+import { getUsersByUsername } from './Api';
 
 function App() {
+
+  const [loggedInUser, setLoggedInUser] = useState({user: {username: 'guest'}})
+
+  useEffect(() => {
+    getUsersByUsername('cooljmessy').then((user) => {
+      setLoggedInUser(user)
+    })
+  }, [])
+
   return (
+    <LoggedInUserContext.Provider value={{loggedInUser, setLoggedInUser}}>
     <BrowserRouter>
       <div className="App">
         <Header />
@@ -23,6 +36,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </LoggedInUserContext.Provider>
   );
 }
 

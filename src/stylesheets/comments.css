@@ -50,22 +50,10 @@
     margin: auto;
 }
 
-.comment-container .vote-container{
+.comment-vote-container{
     font-size: 0.8em;
     grid-area: vote;
 }
-
-.comment-container .d20{
-    height: 75px;
-}
-
-.comment-container #upvote{
-    height: 40px;
-   }
-
-.comment-container #downvote{
-    height: 40px;
-   }
 
 /* AddComment */
 
@@ -80,7 +68,7 @@
     resize: none;
 }
 
-.comment-input-box:focus{
+.comment-box-form:focus{
     height: 125px;   
 }
 
