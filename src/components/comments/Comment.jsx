@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useContext } from 'react'
 import { useEffect } from 'react'
-import { getUsersByUsername } from '../../Api'
+import { getUsersByUsername, deleteCommentById } from '../../Api'
 import { LoggedInUserContext } from '../../contexts/LoggedInUser'
 import CommentVotes from './CommentVotes.jsx'
 
-const Comment = ({comment}) => {
+const Comment = ({comment, setCommentCount}) => {
 
     const { loggedInUser } = useContext(LoggedInUserContext)
     const { user: {username} } = loggedInUser
@@ -21,15 +21,31 @@ const Comment = ({comment}) => {
         getUsersByUsername(author).then(({user}) => {
             setUser(user)
         })
-    }, [])
+    }, [comment])
 
-    return <div className="comment-container">
+    const deleteComment = () => {
+        deleteCommentById(comment_id)
+        .then(() => {
+            setCommentCount((currCommentCount) => {
+                return parseInt(currCommentCount) - 1
+            })
+        })
+        .catch((err) => window.alert(err))
+    }
+
+    const DeleteButton = () => {
+        if(username === author){
+            return <img className="delete-button" alt="delete button" src="/img/delete.png" onClick={deleteComment}></img>
+        }
+    }
+
+    return <div className="comment-container" >
         <img className="comment-avatar" alt={author} src={avatar_url}/>
         <p className="comment-author">{author}</p>
-        <p className="comment-body">{body}</p>
+        <p className="comment-body">{body}
+        <DeleteButton /></p>
         <p className="comment-timestamp">{postDate + "\n" + postTime}</p>
         <CommentVotes votes={votes} comment_id={comment_id}/>
-
     </div>
 }
 

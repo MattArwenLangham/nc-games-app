@@ -59,3 +59,12 @@ export const postComment = (review_id, comment, username) => {
         return Promise.reject(err)
     })
 }
+
+export const deleteCommentById = (comment_id) => {
+    return axios
+    .delete(`https://matts-nc-games.herokuapp.com/API/comments/${comment_id}`)
+    .then(({data: deletedComment}) => deletedComment)
+    .catch((err => {
+        return Promise.reject(err)
+    }))
+}

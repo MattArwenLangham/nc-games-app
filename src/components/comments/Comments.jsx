@@ -4,18 +4,18 @@ import Comment from './Comment'
 import {getCommentsByReview} from '../../Api'
 import { useState } from 'react'
 
-const Comments = ({review_id}) => {
+const Comments = ({review_id, commentCount, setCommentCount}) => {
     
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
         getCommentsByReview(review_id)
-        .then(({comments}) => {
-            if(typeof comments === "object") {
-                setComments([...comments])
+        .then(({comments: commentArray}) => {
+            if(typeof commentArray === "object") {
+                setComments([...commentArray])
             }
         })
-    }, [])
+    }, [commentCount])
 
     const GenerateComments = () => {
         if(!comments.length){
@@ -23,7 +23,7 @@ const Comments = ({review_id}) => {
         } else {
             return <>
                 {comments.map((comment) => {
-                return <Comment comment={comment} key={comment.comment_id}/>                    
+                return <Comment comment={comment} key={comment.comment_id} setCommentCount={setCommentCount}/>                    
                 })}
             </>
         }

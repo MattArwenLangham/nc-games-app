@@ -73,6 +73,10 @@ header h3 {
   grid-area: reviews;
 }
 
+#nav-bar{
+  display: visible;
+}
+
 @media only screen and (min-width: 600px) {
 
   header {

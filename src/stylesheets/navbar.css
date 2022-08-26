@@ -1,0 +1,14 @@
+.nav-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px black solid;
+    background-color: rgb(199, 186, 186);
+}
+
+@media only screen and (min-width: 600px) {
+    .nav-bar{
+        flex-direction: row;
+    }
+
+  }
