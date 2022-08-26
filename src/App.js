@@ -7,6 +7,7 @@ import Users from './components/Users'
 import AboutUs from './components/AboutUs'
 import FullReview from './components/FullReview'
 import NavBar from './components/NavBar.jsx'
+import InvalidPath from './components/invalid/InvalidPath'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { LoggedInUserContext } from './contexts/LoggedInUser';
 import { useEffect, useState } from 'react';
@@ -34,6 +35,7 @@ function App() {
           <Route path="reviews/:review_id" element={[<NavBar />, <FullReview />]}/>
           <Route path="users/" element={[<NavBar />, <Users />]}/>
           <Route path="about-us/" element={[<NavBar />, <AboutUs />]}/>
+          <Route path="/:invalid_path" element={[<NavBar />, <InvalidPath />]}/>
         </Routes>
       </div>
     </BrowserRouter>
