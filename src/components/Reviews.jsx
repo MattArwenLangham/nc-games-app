@@ -22,7 +22,6 @@ const Reviews = () => {
     }, [sort_by, order, category])
 
     const queryBuilder = (sortBy = sort_by) => {
-        console.log(sortBy)
         let searchQuery = ""
         if(category) searchQuery = (`&category=${category}`)
         if(sortBy) searchQuery = searchQuery.concat(`&sort_by=${sortBy}`)

@@ -6,6 +6,7 @@ import Reviews from './components/Reviews'
 import Users from './components/Users'
 import AboutUs from './components/AboutUs'
 import FullReview from './components/FullReview'
+import NavBar from './components/NavBar.jsx'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { LoggedInUserContext } from './contexts/LoggedInUser';
 import { useEffect, useState } from 'react';
@@ -28,11 +29,11 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />}/>
-          <Route path="categories/" element={<Categories />}/>
-          <Route path="reviews/" element={<Reviews />}/>
-          <Route path="reviews/:review_id" element={<FullReview />}/>
-          <Route path="users/" element={<Users />}/>
-          <Route path="about-us/" element={<AboutUs />}/>
+          <Route path="categories/" element={[<NavBar />, <Categories />]}/>
+          <Route path="reviews/" element={[<NavBar />, <Reviews />]}/>
+          <Route path="reviews/:review_id" element={[<NavBar />, <FullReview />]}/>
+          <Route path="users/" element={[<NavBar />, <Users />]}/>
+          <Route path="about-us/" element={[<NavBar />, <AboutUs />]}/>
         </Routes>
       </div>
     </BrowserRouter>

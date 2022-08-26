@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { postComment } from '../../Api';
 import '../../stylesheets/comments.css'
 
-const AddComment = () => {
+const AddComment = ({setCommentCount}) => {
     const { review_id } = useParams();
     const ref = useRef(null);
     const [isLoading, setIsLoading] = useState(false)
@@ -23,7 +23,9 @@ const AddComment = () => {
             setIsLoading(true)
             submit.innerHTML = 'Comment Posted!'
             commentBox.style.backgroundColor = 'green'
-            console.log(comment)
+            setCommentCount((currCommentCount) => {
+                return parseInt(currCommentCount) + 1
+            })
         })
         .catch(({response}) => {
             window.alert(response.data.msg)
