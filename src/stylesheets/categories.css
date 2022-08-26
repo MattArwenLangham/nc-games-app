@@ -8,6 +8,23 @@
     height: 50vh;
     margin: 20px;
     border-radius: 5%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.category-card h1 {
+    background-color: rgba(255,255,255,0.9);
+    margin: 10px;
+    border: 2px solid black;
+}
+
+.category-card p {
+    background-color: rgba(255,255,255,0.9);
+    width: fit-content;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid black;
+
 }
 
 @media only screen and (min-width: 600px) {

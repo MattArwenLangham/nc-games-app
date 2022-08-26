@@ -11,9 +11,9 @@ const Category = ({ info, key }) => {
             search: `?category=${slug}`
         })
     }
-
-    return <div className="category-card" onClick={filterPostsByCategory} key={key}>
-        <h1>{slug}</h1>
+    
+    return <div className="category-card" onClick={filterPostsByCategory} key={key} style={{backgroundImage: `url(./img/categories/${slug}.jpg)`}}>
+        <h1>{slug.replaceAll("-", " ")}</h1>
         <p>{description}</p>
     </div>
 }
