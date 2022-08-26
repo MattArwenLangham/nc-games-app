@@ -20,7 +20,6 @@ const Reviews = () => {
         .then(({reviews: reviewsArray}) => {
             setReviews(reviewsArray)
         }).catch((err) => {
-            console.log(err)
             setError(`ERROR: ${err.response.data.msg}`)
         })
     }, [sort_by, order, category])
