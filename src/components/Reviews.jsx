@@ -8,6 +8,7 @@ const Reviews = () => {
 
     const [reviews, setReviews] = useState([])
     const [searchParams] = useSearchParams()
+    const [error, setError] = useState('')
 
     const navigate = useNavigate()
     let category = searchParams.get("category")
@@ -18,6 +19,8 @@ const Reviews = () => {
         fetchReviews(category, sort_by, order)
         .then(({reviews: reviewsArray}) => {
             setReviews(reviewsArray)
+        }).catch((err) => {
+            setError(`ERROR: ${err.response.data.msg}`)
         })
     }, [sort_by, order, category])
 
@@ -47,6 +50,8 @@ const Reviews = () => {
         else order = 'ASC'
         queryBuilder()
     }
+    
+    if(!reviews.length) return <h1>{error}</h1>
     
     return <>
     <header className="reviews-header">

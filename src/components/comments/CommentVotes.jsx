@@ -17,7 +17,6 @@ const CommentVotes = ({votes, comment_id}) => {
         sendCommentVote(comment_id, voteChange)
         .then(() => {
             setIsLoading(false)
-            console.log("done!")
         })
         .catch((err) => {
             window.alert(`Failed to update comment vote. ${err}`)

@@ -13,6 +13,7 @@ const FullReview = () => {
     const { review_id } = useParams()
     const {avatar_url} = user
     const [commentCount, setCommentCount] = useState(0)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         fetchReviewById(review_id)
@@ -27,15 +28,18 @@ const FullReview = () => {
                 setUser(user)
             })
         })
+        .catch((err) => {
+            setError(`ERROR: ${err.response.data.msg}`)
+        })
     }, [review_id])
 
-    if(!review) return
+    if(!review) return <h1>{error}</h1>
 
     const {title, category, designer, owner, review_body, review_img_url, created_at, votes, comment_count} = review;
     const postDate = new Date(created_at).toLocaleDateString("en-UK")
     const postTime = new Date(created_at).toLocaleTimeString("en-UK")
 
-    return <div className="review-container">
+    return <div id="review-container" className="review-container">
         <div className="background" style={{"--img": `url(${review_img_url})`}}></div>
         <div className="review-heading">
 
