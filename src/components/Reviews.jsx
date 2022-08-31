@@ -3,6 +3,7 @@ import '../stylesheets/Reviews.css'
 import {fetchReviews } from '../Api'
 import ReviewCard from './ReviewCard'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import Loading from './Loading'
 
 const Reviews = () => {
 
@@ -14,13 +15,18 @@ const Reviews = () => {
     let category = searchParams.get("category")
     let sort_by = searchParams.get("sort_by")
     let order = searchParams.get("order")
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
+        setIsLoading(true)
         fetchReviews(category, sort_by, order)
         .then(({reviews: reviewsArray}) => {
             setReviews(reviewsArray)
-        }).catch((err) => {
+            setIsLoading(false)
+        })
+        .catch((err) => {
             setError(`ERROR: ${err.response.data.msg}`)
+            setIsLoading(false)
         })
     }, [sort_by, order, category])
 
@@ -50,7 +56,9 @@ const Reviews = () => {
         else order = 'ASC'
         queryBuilder()
     }
-    
+
+    while(isLoading) return <Loading />
+
     if(!reviews.length) return <h1>{error}</h1>
     
     return <>
@@ -71,7 +79,6 @@ const Reviews = () => {
         {reviews.map((reviewCard) => {
             return <ReviewCard info={reviewCard} key={reviewCard.review_id}/>
         })}
-
     </div>
     </>
 }
