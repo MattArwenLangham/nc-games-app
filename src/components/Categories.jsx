@@ -15,10 +15,10 @@ const Categories = () => {
         fetchCategories()
         .then(({categories: categoriesArray}) => {
             setCategories(categoriesArray)
-            setIsLoading(true)
+            setIsLoading(false)
         }).catch((err) => {
             setError(`ERROR: ${err.response.data.msg}`)
-            setIsLoading(true)
+            setIsLoading(false)
         })
     }, [])
 
